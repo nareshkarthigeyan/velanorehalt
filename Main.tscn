@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://5xiceg4sypgu"]
+
+[ext_resource type="Script" uid="uid://bcigptwry1wtg" path="res://Scripts/main.gd" id="1_fos0i"]
+[ext_resource type="PackedScene" uid="uid://bvmhupud5dkr0" path="res://Train/Train.tscn" id="1_r0du0"]
+[ext_resource type="PackedScene" uid="uid://cy7hdw0ifr3x5" path="res://Station/Station.tscn" id="3_fos0i"]
+[ext_resource type="PackedScene" uid="uid://bkjblgr1qthon" path="res://Player/player.tscn" id="4_cm0pq"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_fos0i")
+
+[node name="Train" parent="." instance=ExtResource("1_r0du0")]
+visible = false
+position = Vector2(10000, 155)
+
+[node name="Station" parent="." instance=ExtResource("3_fos0i")]
+top_level = true
+z_index = 1
+position = Vector2(196, 200)
+
+[node name="player" parent="." instance=ExtResource("4_cm0pq")]
+z_index = 2
+position = Vector2(307, 191)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(3.33331, -23.3333)
+offset = Vector2(0, -43.3)
+zoom = Vector2(2.3, 2.3)

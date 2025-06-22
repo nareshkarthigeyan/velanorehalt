@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://byserko4f17qo"
+path="res://.godot/imported/Train Horn - Sound Effect (HD).mp3-219030aae35f5058aff4fed6e4bc2330.mp3str"
+
+[deps]
+
+source_file="res://Train/Locomotive/Train Horn - Sound Effect (HD).mp3"
+dest_files=["res://.godot/imported/Train Horn - Sound Effect (HD).mp3-219030aae35f5058aff4fed6e4bc2330.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

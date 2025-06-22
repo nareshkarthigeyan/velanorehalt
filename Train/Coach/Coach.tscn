@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmsjeksae7fgu"]
+
+[ext_resource type="Texture2D" uid="uid://ite6whcy76ft" path="res://Train/Coach/blue-coach.png" id="1_nne56"]
+[ext_resource type="Texture2D" uid="uid://dkbklmdliw14b" path="res://Train/Coach/lbh_red_coach.png" id="2_0abt7"]
+[ext_resource type="AudioStream" uid="uid://cpfryy5pklk8q" path="res://Train/Coach/coach_sound.mp3" id="3_qy3w2"]
+
+[node name="Coach" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-5.78802, -3.768)
+scale = Vector2(0.899921, 0.885667)
+texture = ExtResource("1_nne56")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-5.78802, -3.768)
+scale = Vector2(0.899921, 0.885667)
+texture = ExtResource("2_0abt7")
+
+[node name="Coach_Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qy3w2")
+max_distance = 518.0
+attenuation = 2.0

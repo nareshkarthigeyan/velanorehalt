@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvmhupud5dkr0"]
+
+[ext_resource type="Script" uid="uid://clow3j8d4swyh" path="res://Scripts/train.gd" id="1_c2x1l"]
+[ext_resource type="PackedScene" uid="uid://bmsjeksae7fgu" path="res://Train/Coach/Coach.tscn" id="2_kuf58"]
+[ext_resource type="Texture2D" uid="uid://duovdfyfcm0y3" path="res://Train/Locomotive/train_idle.png" id="3_ydxb6"]
+[ext_resource type="AudioStream" uid="uid://c2q7btn2riwtw" path="res://Train/Locomotive/WAP-4 Horn  WAP-5 Horn  WAP-7 Horn-[AudioTrimmer.com].mp3" id="4_xt8h1"]
+[ext_resource type="AudioStream" uid="uid://bhe1xsjp5x4yi" path="res://Train/Locomotive/engine_sound.mp3" id="5_gcxuc"]
+
+[node name="Train" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_c2x1l")
+
+[node name="Coach17" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(4693, 5)
+
+[node name="Coach15" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(4159, 5)
+
+[node name="Coach13" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(3625, 5)
+
+[node name="Coach14" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(3892, 5)
+
+[node name="Coach" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(421, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(143, -1)
+scale = Vector2(0.9375, 0.9375)
+texture = ExtResource("3_ydxb6")
+
+[node name="WhistleSound" type="AudioStreamPlayer2D" parent="Sprite2D"]
+position = Vector2(-126.933, -14.4)
+stream = ExtResource("4_xt8h1")
+volume_db = -0.285
+max_distance = 6000.0
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="Sprite2D"]
+stream = ExtResource("5_gcxuc")
+volume_db = 0.992
+autoplay = true
+max_distance = 4096.0
+attenuation = 3.03143
+
+[node name="Coach2" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(688, 5)
+
+[node name="Coach3" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(955, 5)
+
+[node name="Coach4" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(1222, 5)
+
+[node name="Coach5" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(1489, 5)
+
+[node name="Coach6" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(1756, 5)
+
+[node name="Coach7" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(2023, 5)
+
+[node name="Coach8" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(2290, 5)
+
+[node name="Coach9" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(2557, 5)
+
+[node name="Coach10" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(2824, 5)
+
+[node name="Coach11" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(3091, 5)
+
+[node name="Coach12" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(3358, 5)
+
+[node name="Coach16" parent="." instance=ExtResource("2_kuf58")]
+position = Vector2(4426, 5)
