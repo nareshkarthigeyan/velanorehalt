@@ -7,7 +7,7 @@ class_name Train
 var current_speed: float = 0.0
 var target_speed: float = 0.0
 var state: String = "idle"
-var wait_timer: float = 25.0
+var wait_timer: float = 60.0
 var stop_position_x: float = 0.0
 
 @onready var whistle = $Sprite2D/WhistleSound

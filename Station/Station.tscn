@@ -7,8 +7,10 @@
 texture = ExtResource("1_dnvvb")
 0:0/size_in_atlas = Vector2i(6, 3)
 0:0/0 = 0
-6:0/size_in_atlas = Vector2i(9, 7)
-6:0/0 = 0
+8:0/size_in_atlas = Vector2i(9, 7)
+8:0/0 = 0
+0:5/size_in_atlas = Vector2i(8, 6)
+0:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_oy5xo"]
 sources/1 = SubResource("TileSetAtlasSource_5cbuf")
@@ -24,21 +26,21 @@ texture = ExtResource("1_ad2ja")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_na7ix")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dnvvb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8d8p6"]
 texture = ExtResource("1_dnvvb")
-6:7/0 = 0
-14:7/0 = 0
 0:0/size_in_atlas = Vector2i(6, 3)
 0:0/0 = 0
+0:8/size_in_atlas = Vector2i(9, 9)
+0:8/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_ct0gp"]
-sources/0 = SubResource("TileSetAtlasSource_dnvvb")
+[sub_resource type="TileSet" id="TileSet_6lrbu"]
+sources/0 = SubResource("TileSetAtlasSource_8d8p6")
 
 [node name="Station" type="Node2D"]
 
 [node name="SignBoard" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAANAPz/AQAGAAAAAAB8Afz/AQAGAAAAAACbAPz/AAAEAAAAAADBAPz/AQAGAAAAAAA=")
+tile_map_data = PackedByteArray("AAANAPz/AQAIAAAAAAB8Afz/AQAIAAAAAADBAPz/AQAIAAAAAAA=")
 tile_set = SubResource("TileSet_oy5xo")
 
 [node name="station" type="TileMapLayer" parent="."]
@@ -47,5 +49,5 @@ tile_map_data = PackedByteArray("AAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAA
 tile_set = SubResource("TileSet_dnvvb")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AABKAP7/AAAAAAAAAABQAP7/AAAAAAAAAACDAP7/AAAAAAAAAACJAP7/AAAAAAAAAACPAP7/AAAAAAAAAACxAP7/AAAAAAAAAAC3AP7/AAAAAAAAAADwAP7/AAAAAAAAAAD2AP7/AAAAAAAAAABBAf7/AAAAAAAAAABHAf7/AAAAAAAAAABOAf7/AAAAAAAAAABUAf7/AAAAAAAAAAAvAP7/AAAAAAAAAAA1AP7/AAAAAAAAAAA=")
-tile_set = SubResource("TileSet_ct0gp")
+tile_map_data = PackedByteArray("AABKAP7/AAAAAAAAAABQAP7/AAAAAAAAAACDAP7/AAAAAAAAAACJAP7/AAAAAAAAAACPAP7/AAAAAAAAAACxAP7/AAAAAAAAAAC3AP7/AAAAAAAAAADwAP7/AAAAAAAAAAD2AP7/AAAAAAAAAABBAf7/AAAAAAAAAABHAf7/AAAAAAAAAABOAf7/AAAAAAAAAABUAf7/AAAAAAAAAAAvAP7/AAAAAAAAAAA1AP7/AAAAAAAAAABhAP3/AAAAAAUAAAAQAfz/AAAAAAgAAABmAPz/AAAAAAgAAAA=")
+tile_set = SubResource("TileSet_6lrbu")

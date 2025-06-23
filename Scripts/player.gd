@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 const WALK_SPEED = 100.0
-const RUN_SPEED = 300.0
-const JUMP_VELOCITY = -500.0
+const RUN_SPEED = 350.0
+const JUMP_VELOCITY = -300.0
 const DOUBLE_TAP_TIME = 0.3  # in seconds
 
 @onready var anim = $AnimatedSprite2D
@@ -48,7 +48,7 @@ func _input(event):
 		Input.action_release("ui_right")
 		Input.action_release("ui_accept")
 		
-		#TEMP
+# END OF TEMP
 
 func _physics_process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec() / 1000.0  # Convert to seconds

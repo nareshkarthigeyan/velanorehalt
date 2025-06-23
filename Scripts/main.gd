@@ -23,5 +23,5 @@ func spawn_train():
 	else:
 		push_error("❌ Train instance is missing the Train.gd script!")
 		
-	await get_tree().create_timer(180).timeout
+	await get_tree().create_timer(300).timeout
 	spawn_train()
