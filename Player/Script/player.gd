@@ -5,18 +5,15 @@ const RUN_SPEED = 350.0
 const JUMP_VELOCITY = -300.0
 const DOUBLE_TAP_TIME = 0.3  # in seconds
 
-@onready var AnimatedPlayerSprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim = $AnimatedSprite2D
 @onready var sprite = $AnimatedSprite2D
-@onready var state_machine: PlayerStateMachine = $StateMachine
+
 var last_input_time = {
 	"ui_left": -1.0,
 	"ui_right": -1.0
 }
 
 var run_direction = 0
-
-func _ready() -> void:
-	state_machine.Initialize(self)
 
 # TEMP
 func _unhandled_input(event):
@@ -57,12 +54,12 @@ func _physics_process(delta: float) -> void:
 	var current_time = Time.get_ticks_msec() / 1000.0  # Convert to seconds
 
 	# Apply gravity
-	#if not is_on_floor():
-		#velocity.y += ProjectSettings.get_setting("physics/2d/default_gravity") * delta
-#
-	## Jump
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
+	if not is_on_floor():
+		velocity.y += ProjectSettings.get_setting("physics/2d/default_gravity") * delta
+
+	# Jump
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
 	# Direction input
 	var direction = Input.get_axis("ui_left", "ui_right")
@@ -104,14 +101,14 @@ func _physics_process(delta: float) -> void:
 
 		# Animation
 		if speed == RUN_SPEED:
-			if AnimatedPlayerSprite.animation != "run":
-				AnimatedPlayerSprite.play("run")
+			if anim.animation != "run":
+				anim.play("run")
 		else:
-			if AnimatedPlayerSprite.animation != "walk":
-				AnimatedPlayerSprite.play("walk")
+			if anim.animation != "walk":
+				anim.play("walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
-		if AnimatedPlayerSprite.animation != "idle":
-			AnimatedPlayerSprite.play("idle")
+		if anim.animation != "idle":
+			anim.play("idle")
 
 	move_and_slide()
