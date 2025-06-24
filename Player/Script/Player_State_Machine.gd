@@ -28,18 +28,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 
-func Initialize( _player: Player ) -> void:
+func Initialize(_player: Player) -> void:
 	states = []
-
 
 	for c in get_children():
 		if c is State:
-			states.append(c);
-	
+			states.append(c)
+			c.player = _player 
+
 	if states.size() > 0:
-		states[0].player = _player
-		ChangeState( states[0] )
-		process_mode = Node.PROCESS_MODE_INHERIT
+		ChangeState(states[0])
+
+	set_physics_process(true) 
 		
 
 func ChangeState(new_state: State) -> void:
