@@ -13,6 +13,8 @@ var last_input_time = {
 }
 
 var run_direction = 0
+var jump_requested := false
+var jump_cancelled := false
 
 func _ready() -> void:
 	state_machine.Initialize(self)
@@ -48,7 +50,14 @@ func _input(event):
 		Input.action_release("ui_right")
 		Input.action_release("ui_accept")
 
-
+func delayed_jump() -> void:
+	if state_machine.current_state.name == "JumpState":
+		return
+	var current_request = jump_requested
+	await get_tree().create_timer(0.05).timeout
+	if current_request and not jump_cancelled:
+		state_machine.ChangeState(state_machine.get_node("JumpState"))
+	
 func _physics_process(delta: float) -> void:
 	state_machine._physics_process(delta)
 	move_and_slide()

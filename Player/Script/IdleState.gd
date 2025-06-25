@@ -6,6 +6,8 @@ func Enter():
 	player.velocity.x = move_toward(player.velocity.x, 0, player.WALK_SPEED)
 	player.AnimatedPlayerSprite.play("idle")
 
+
+	
 func Physics(delta: float) -> State:
 	#print("Inside Idle Physics")
 	if not player.is_on_floor():
@@ -21,8 +23,14 @@ func Physics(delta: float) -> State:
 		input_pressed = "ui_left"
 	elif Input.is_action_just_pressed("ui_right"):
 		input_pressed = "ui_right"
-	elif Input.is_action_just_pressed("ui_accept"):
-		return player.state_machine.get_node("JumpState")
+	elif Input.is_action_pressed("ui_accept"):
+		player.jump_requested = true
+		player.jump_cancelled = false
+		player.delayed_jump()
+		return null
+		
+	if Input.is_action_just_released("ui_accept"):
+		player.jump_cancelled = true
 
 	if input_pressed != "":
 		if current_time - player.last_input_time[input_pressed] <= player.DOUBLE_TAP_TIME:

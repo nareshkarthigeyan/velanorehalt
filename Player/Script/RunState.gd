@@ -4,12 +4,18 @@ extends State
 func Enter():
 	print("In Run State!")
 	player.AnimatedPlayerSprite.play("run")
-
+	
 func Physics(delta: float) -> State:
 	var direction = Input.get_axis("ui_left", "ui_right")
 
-	if not player.is_on_floor() or Input.is_action_just_pressed("ui_accept"):
-		return player.state_machine.get_node("JumpState")
+	if not player.is_on_floor() or Input.is_action_pressed("ui_accept"):		
+		player.jump_requested = true
+		player.jump_cancelled = false
+		player.delayed_jump()
+		return null
+		
+	if Input.is_action_just_released("ui_accept"):
+		player.jump_cancelled = true
 		
 
 	if direction == 0:
