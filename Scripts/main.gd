@@ -2,7 +2,7 @@ extends Node2D
 
 @export var train_scene: PackedScene = preload("res://Train/Train.tscn")
 @export var station_path: NodePath = "Station"
-@export var train_spawn_x: float = 10000.0
+@export var train_spawn_x: float = 15000.0
 @export var train_delay: float = 2.0
 
 func _ready():
@@ -23,5 +23,5 @@ func spawn_train():
 	else:
 		push_error("❌ Train instance is missing the Train.gd script!")
 		
-	await get_tree().create_timer(180).timeout
+	await get_tree().create_timer(300).timeout
 	spawn_train()

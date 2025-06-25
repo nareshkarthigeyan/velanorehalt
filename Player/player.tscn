@@ -1,9 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://bkjblgr1qthon"]
+[gd_scene load_steps=38 format=3 uid="uid://bkjblgr1qthon"]
 
-[ext_resource type="Script" uid="uid://bhryd3twfncfk" path="res://Scripts/player.gd" id="1_i3pqv"]
+[ext_resource type="Script" uid="uid://bhryd3twfncfk" path="res://Player/Script/Player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://ch8c8t5mnjtfg" path="res://Player/Sprites/Idle.png" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://r2io0emj6ds3" path="res://Player/Sprites/Walk.png" id="2_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://c6dqcr7w3lupx" path="res://Player/Sprites/Run.png" id="3_hqtel"]
+[ext_resource type="Script" uid="uid://da5td8gcrcr4r" path="res://Player/Script/Player_State_Machine.gd" id="5_k53q1"]
+[ext_resource type="Script" uid="uid://520e5opjcnty" path="res://Player/Script/IdleState.gd" id="6_fhl08"]
+[ext_resource type="Script" uid="uid://bkcqhhwrqqvdp" path="res://Player/Script/WalkState.gd" id="7_00tjw"]
+[ext_resource type="Script" uid="uid://he6jhn30cndl" path="res://Player/Script/RunState.gd" id="8_x3vf3"]
+[ext_resource type="Script" uid="uid://p33kml42n48l" path="res://Player/Script/JumpState.gd" id="9_apopc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("1_onrkg")
@@ -228,3 +233,18 @@ shape = SubResource("CapsuleShape2D_i3pqv")
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
 position = Vector2(10, -61)
 current = true
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("5_k53q1")
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("6_fhl08")
+
+[node name="WalkState" type="Node" parent="StateMachine"]
+script = ExtResource("7_00tjw")
+
+[node name="RunState" type="Node" parent="StateMachine"]
+script = ExtResource("8_x3vf3")
+
+[node name="JumpState" type="Node" parent="StateMachine"]
+script = ExtResource("9_apopc")
