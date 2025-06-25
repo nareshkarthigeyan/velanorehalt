@@ -2,7 +2,7 @@ class_name RunState
 extends State
 
 func Enter():
-	print("In Run State!")
+	#print("In Run State!")
 	player.AnimatedPlayerSprite.play("run")
 	
 func Physics(delta: float) -> State:

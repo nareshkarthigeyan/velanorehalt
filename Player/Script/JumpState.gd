@@ -5,7 +5,7 @@ var has_jumped := false
 const JUMP_VELOCITY = -400.0
 
 func Enter() -> void:
-	print("In Jump State!")
+	#print("In Jump State!")
 	if player.is_on_floor():
 		player.velocity.y = JUMP_VELOCITY
 		has_jumped = true

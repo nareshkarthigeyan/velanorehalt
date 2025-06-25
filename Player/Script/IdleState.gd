@@ -2,7 +2,7 @@ class_name IdleState
 extends State
 
 func Enter():
-	print("In Idle State!")
+	#print("In Idle State!")
 	player.velocity.x = move_toward(player.velocity.x, 0, player.WALK_SPEED)
 	player.AnimatedPlayerSprite.play("idle")
 
