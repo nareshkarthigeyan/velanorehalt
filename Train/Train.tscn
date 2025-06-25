@@ -1,13 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvmhupud5dkr0"]
+[gd_scene load_steps=11 format=3 uid="uid://bvmhupud5dkr0"]
 
-[ext_resource type="Script" uid="uid://clow3j8d4swyh" path="res://Scripts/train.gd" id="1_c2x1l"]
+[ext_resource type="Script" uid="uid://clow3j8d4swyh" path="res://Train/Script/Train.gd" id="1_c2x1l"]
 [ext_resource type="PackedScene" uid="uid://bmsjeksae7fgu" path="res://Train/Coach/Coach.tscn" id="2_kuf58"]
 [ext_resource type="Texture2D" uid="uid://duovdfyfcm0y3" path="res://Train/Locomotive/train_idle.png" id="3_ydxb6"]
 [ext_resource type="AudioStream" uid="uid://c2q7btn2riwtw" path="res://Train/Locomotive/WAP-4 Horn  WAP-5 Horn  WAP-7 Horn-[AudioTrimmer.com].mp3" id="4_xt8h1"]
 [ext_resource type="AudioStream" uid="uid://bhe1xsjp5x4yi" path="res://Train/Locomotive/engine_sound.mp3" id="5_gcxuc"]
 [ext_resource type="Script" uid="uid://hqnlg20b30g" path="res://Train/Script/TrainStateMachine.gd" id="6_xt8h1"]
 [ext_resource type="Script" uid="uid://c2708p7bcyteo" path="res://Train/Script/RunningState.gd" id="7_gcxuc"]
-[ext_resource type="Script" uid="uid://dvka1er3svwi1" path="res://Train/Script/ApproachingState.gd" id="8_pvpa1"]
 [ext_resource type="Script" uid="uid://bahotwiptsa4t" path="res://Train/Script/StoppingState.gd" id="9_gcxuc"]
 [ext_resource type="Script" uid="uid://b46ggdufm7kh3" path="res://Train/Script/HaltedState.gd" id="10_wu7fh"]
 [ext_resource type="Script" uid="uid://bia25v5jcwls8" path="res://Train/Script/LeavingState.gd" id="11_d6u5h"]
@@ -91,9 +90,6 @@ script = ExtResource("6_xt8h1")
 
 [node name="RunningState" type="Node" parent="TrainStateMachine"]
 script = ExtResource("7_gcxuc")
-
-[node name="ApproachingState" type="Node" parent="TrainStateMachine"]
-script = ExtResource("8_pvpa1")
 
 [node name="StoppingState" type="Node" parent="TrainStateMachine"]
 script = ExtResource("9_gcxuc")

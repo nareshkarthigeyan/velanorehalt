@@ -13,7 +13,7 @@ script = ExtResource("1_fos0i")
 
 [node name="Train" parent="." instance=ExtResource("1_r0du0")]
 visible = false
-position = Vector2(10000, 155)
+position = Vector2(210, 155)
 
 [node name="Station" parent="." instance=ExtResource("3_fos0i")]
 top_level = true
@@ -22,7 +22,7 @@ position = Vector2(196, 200)
 
 [node name="player" parent="." instance=ExtResource("4_cm0pq")]
 z_index = 2
-position = Vector2(3570, -267)
+position = Vector2(12153, 106)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(3.33331, -23.3333)

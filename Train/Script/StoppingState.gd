@@ -15,11 +15,6 @@ func Process(delta) -> TrainState:
 	if distance <= 250 && train.current_speed <= 0:
 		print("Stopping area reached!")
 		return train.state_machine.get_node("HaltedState")
-
-	#smoothing = delta * 0.0103
-	#print(distance, " ", train.current_speed)
-	#train.current_speed = move_toward(train.current_speed, train.target_speed, smoothing * max_speed)
-	#train.position.x -= train.current_speed * delta
 	
 	 #Deceleration factor increases as you get closer
 	var decel_strength = clamp((1.0 - (distance / 1000.0)), 0.01013, 0.038)
@@ -29,4 +24,10 @@ func Process(delta) -> TrainState:
 
 	train.current_speed = move_toward(train.current_speed, 0, smoothing * max_speed)
 	train.position.x -= train.current_speed * delta
+	var rounded_speed = int(train.current_speed / 90) * 90
+	if rounded_speed < train.last_speed_marker:
+		train.last_speed_marker = rounded_speed
+		if not train.whistle.playing:
+				#print("Whisle Played!")
+			train.whistle.play()
 	return null

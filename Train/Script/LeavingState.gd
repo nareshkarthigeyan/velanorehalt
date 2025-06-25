@@ -10,11 +10,12 @@ func Enter():
 func Process(delta) -> TrainState:
 	train.target_speed = max_speed;
 	var smoothing;
-	if train.current_speed < 50:
-		smoothing = delta * 0.01
-	else:
-		smoothing = delta * 0.1
-	train.current_speed = move_toward(train.current_speed, 500, smoothing * max_speed)
+	smoothing = delta * 0.01
+	#if train.current_speed < 50:
+	train.current_speed = move_toward(train.current_speed, max_speed, smoothing * max_speed)
+	#else:
+		#smoothing = delta * 0.1
+		#train.current_speed = move_toward(train.current_speed, 500, smoothing * max_speed)
 	train.position.x -= train.current_speed * delta
 	print(train.current_speed)
 	return null

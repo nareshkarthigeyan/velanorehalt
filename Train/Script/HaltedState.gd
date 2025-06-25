@@ -32,15 +32,4 @@ func _wait_and_leave() -> void:
 
 
 func Process(delta) -> TrainState:
-	#print("Train Wait Timer: ", train.wait_timer)
-#
-	#await get_tree().create_timer(train.stop_duration - 5).timeout
-	##WHy is this played so before?
-	#print(train.wait_timer);
-	#train.has_played_pre_leave_sound = true
-	#train.whistle.play()
-	#print("Pre-leave whistle!")
-#
-	#await get_tree().create_timer(5).timeout
-	#return train.state_machine.get_node("LeavingState")
 	return null
