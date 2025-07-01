@@ -17,5 +17,5 @@ func Process(delta) -> TrainState:
 		#smoothing = delta * 0.1
 		#train.current_speed = move_toward(train.current_speed, 500, smoothing * max_speed)
 	train.position.x -= train.current_speed * delta
-	print(train.current_speed)
+	#print(train.current_speed)
 	return null

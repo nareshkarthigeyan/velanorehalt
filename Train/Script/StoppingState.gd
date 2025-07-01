@@ -20,7 +20,7 @@ func Process(delta) -> TrainState:
 	var decel_strength = clamp((1.0 - (distance / 1000.0)), 0.01013, 0.038)
 
 	smoothing = delta * decel_strength * 0.8
-	print(distance, "\t", train.current_speed, "\t", decel_strength)
+	#print(distance, "\t", train.current_speed, "\t", decel_strength)
 
 	train.current_speed = move_toward(train.current_speed, 0, smoothing * max_speed)
 	train.position.x -= train.current_speed * delta
