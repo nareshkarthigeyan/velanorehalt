@@ -1,15 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmsjeksae7fgu"]
+[gd_scene load_steps=7 format=3 uid="uid://bmsjeksae7fgu"]
 
 [ext_resource type="Texture2D" uid="uid://ite6whcy76ft" path="res://Train/Coach/blue-coach.png" id="1_nne56"]
 [ext_resource type="Texture2D" uid="uid://dkbklmdliw14b" path="res://Train/Coach/lbh_red_coach.png" id="2_0abt7"]
+[ext_resource type="Texture2D" uid="uid://buthxb2niypds" path="res://Train/Coach/lbh_red_coach-door-open.png" id="2_ndnop"]
 [ext_resource type="AudioStream" uid="uid://cpfryy5pklk8q" path="res://Train/Coach/coach_sound.mp3" id="3_qy3w2"]
 [ext_resource type="Script" uid="uid://d3s22w888qu4j" path="res://Train/Coach/boardingArea.gd" id="4_6vem2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vem2"]
-size = Vector2(20, 2)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndnop"]
-size = Vector2(2, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qy3w2"]
 size = Vector2(47, 34.5)
@@ -24,7 +19,13 @@ position = Vector2(-5.78802, -3.768)
 scale = Vector2(0.899921, 0.885667)
 texture = ExtResource("1_nne56")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="RedLHBDoorOpen" type="Sprite2D" parent="."]
+position = Vector2(-5.78802, -3.768)
+scale = Vector2(0.899921, 0.885667)
+texture = ExtResource("2_ndnop")
+
+[node name="RedLHBDoorClose" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-5.78802, -3.768)
 scale = Vector2(0.899921, 0.885667)
 texture = ExtResource("2_0abt7")
@@ -39,25 +40,6 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_6vem2")
 
-[node name="DoorBlocker" type="StaticBody2D" parent="RightDoorArea"]
-
-[node name="Floor" type="CollisionShape2D" parent="RightDoorArea/DoorBlocker"]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(97, 17)
-shape = SubResource("RectangleShape2D_6vem2")
-disabled = true
-
-[node name="RightWall" type="CollisionShape2D" parent="RightDoorArea/DoorBlocker"]
-position = Vector2(106, 0)
-shape = SubResource("RectangleShape2D_ndnop")
-disabled = true
-
-[node name="LeftWall" type="CollisionShape2D" parent="RightDoorArea/DoorBlocker"]
-position = Vector2(87, 0.5)
-shape = SubResource("RectangleShape2D_ndnop")
-disabled = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDoorArea"]
 visible = false
 light_mask = 3
@@ -66,31 +48,13 @@ position = Vector2(97.5, -0.75)
 shape = SubResource("RectangleShape2D_qy3w2")
 
 [node name="Marker2D" type="Marker2D" parent="RightDoorArea"]
-position = Vector2(97, 16)
+position = Vector2(95, 17)
 
 [node name="LeftDoorArea2" type="Area2D" parent="."]
 position = Vector2(-106, 18)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("4_6vem2")
-
-[node name="DoorBlocker" type="StaticBody2D" parent="LeftDoorArea2"]
-position = Vector2(106, -18)
-
-[node name="Floor" type="CollisionShape2D" parent="LeftDoorArea2/DoorBlocker"]
-position = Vector2(-106, 17)
-shape = SubResource("RectangleShape2D_6vem2")
-disabled = true
-
-[node name="Right Wall" type="CollisionShape2D" parent="LeftDoorArea2/DoorBlocker"]
-position = Vector2(-96, -0.5)
-shape = SubResource("RectangleShape2D_ndnop")
-disabled = true
-
-[node name="Left Wall" type="CollisionShape2D" parent="LeftDoorArea2/DoorBlocker"]
-position = Vector2(-115, 0)
-shape = SubResource("RectangleShape2D_ndnop")
-disabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDoorArea2"]
 visible = false
@@ -100,7 +64,7 @@ position = Vector2(2, -19)
 shape = SubResource("RectangleShape2D_qy3w2")
 
 [node name="Marker2D" type="Marker2D" parent="LeftDoorArea2"]
-position = Vector2(0, -2)
+position = Vector2(-3, -1)
 
 [connection signal="area_entered" from="RightDoorArea" to="RightDoorArea" method="_on_area_entered"]
 [connection signal="area_exited" from="RightDoorArea" to="RightDoorArea" method="_on_area_exited"]

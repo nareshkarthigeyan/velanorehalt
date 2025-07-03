@@ -74,6 +74,7 @@ func _reparent_to_train():
 		get_parent().remove_child(self)
 		current_train.add_child(self)
 		set_as_top_level(true)
+		state_machine.ChangeState(state_machine.get_node("BoardedState"))
 		
 func disembark(from_train):
 	if get_parent() == from_train:
@@ -98,15 +99,15 @@ func is_inside_train() -> bool:
 func _physics_process(delta: float) -> void:
 	state_machine._physics_process(delta)
 	
-	if is_inside_train():
-		var train_pos = current_train.global_position
-		var train_delta = train_pos - last_train_pos
-
-		# Move player along with actual delta of train
-		global_position += train_delta
-
-		# Update for next frame
-		last_train_pos = train_pos
+	#if is_inside_train():
+		#var train_pos = current_train.global_position
+		#var train_delta = train_pos - last_train_pos
+#
+		## Move player along with actual delta of train
+		#global_position += train_delta
+#
+		## Update for next frame
+		#last_train_pos = train_pos
 	
 	if Input.is_action_just_pressed(interaction_key):
 		print("clicked E")
