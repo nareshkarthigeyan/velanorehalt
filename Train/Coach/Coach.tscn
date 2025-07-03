@@ -36,8 +36,8 @@ max_distance = 518.0
 attenuation = 2.0
 
 [node name="RightDoorArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("4_6vem2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDoorArea"]
@@ -51,8 +51,8 @@ position = Vector2(96, 17)
 
 [node name="LeftDoorArea2" type="Area2D" parent="."]
 position = Vector2(-106, 18)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("4_6vem2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDoorArea2"]
