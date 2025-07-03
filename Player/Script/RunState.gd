@@ -29,7 +29,12 @@ func Physics(delta: float) -> State:
 	return null
 	
 func HandleInput(event: InputEvent) -> State:
-	if event is InputEventScreenTouch:
-		if event.pressed:
-			player.handle_touch(event.position)	
+	if event.is_action_pressed(player.interaction_key):
+		if player.can_board and player.current_train and player.boarding_marker:
+			player.AnimatedPlayerSprite.play("idle")
+			return player.state_machine.get_node("BoardedState")
+
+	if event is InputEventScreenTouch and event.pressed:
+		player.handle_touch(event.position)
+
 	return null

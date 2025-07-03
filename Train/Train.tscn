@@ -12,7 +12,9 @@
 [ext_resource type="Script" uid="uid://bia25v5jcwls8" path="res://Train/Script/LeavingState.gd" id="11_d6u5h"]
 
 [node name="Train" type="Node2D"]
-position = Vector2(0, -13)
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, -17)
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_c2x1l")
 

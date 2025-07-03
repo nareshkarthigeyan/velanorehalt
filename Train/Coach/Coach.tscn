@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmsjeksae7fgu"]
+[gd_scene load_steps=7 format=3 uid="uid://bmsjeksae7fgu"]
 
 [ext_resource type="Texture2D" uid="uid://ite6whcy76ft" path="res://Train/Coach/blue-coach.png" id="1_nne56"]
 [ext_resource type="Texture2D" uid="uid://dkbklmdliw14b" path="res://Train/Coach/lbh_red_coach.png" id="2_0abt7"]
+[ext_resource type="Texture2D" uid="uid://buthxb2niypds" path="res://Train/Coach/lbh_red_coach-door-open.png" id="2_ndnop"]
 [ext_resource type="AudioStream" uid="uid://cpfryy5pklk8q" path="res://Train/Coach/coach_sound.mp3" id="3_qy3w2"]
+[ext_resource type="Script" uid="uid://d3s22w888qu4j" path="res://Train/Coach/boardingArea.gd" id="4_6vem2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qy3w2"]
+size = Vector2(23, 34.5)
 
 [node name="Coach" type="Node2D"]
+light_mask = 2
+visibility_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -12,7 +19,13 @@ position = Vector2(-5.78802, -3.768)
 scale = Vector2(0.899921, 0.885667)
 texture = ExtResource("1_nne56")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="RedLHBDoorOpen" type="Sprite2D" parent="."]
+position = Vector2(-5.78802, -3.768)
+scale = Vector2(0.899921, 0.885667)
+texture = ExtResource("2_ndnop")
+
+[node name="RedLHBDoorClose" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-5.78802, -3.768)
 scale = Vector2(0.899921, 0.885667)
 texture = ExtResource("2_0abt7")
@@ -21,3 +34,37 @@ texture = ExtResource("2_0abt7")
 stream = ExtResource("3_qy3w2")
 max_distance = 518.0
 attenuation = 2.0
+
+[node name="RightDoorArea" type="Area2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("4_6vem2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightDoorArea"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(97, -1)
+shape = SubResource("RectangleShape2D_qy3w2")
+
+[node name="Marker2D" type="Marker2D" parent="RightDoorArea"]
+position = Vector2(96, 17)
+
+[node name="LeftDoorArea2" type="Area2D" parent="."]
+position = Vector2(-106, 18)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("4_6vem2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDoorArea2"]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(1, -18)
+shape = SubResource("RectangleShape2D_qy3w2")
+
+[node name="Marker2D" type="Marker2D" parent="LeftDoorArea2"]
+position = Vector2(-2, -1)
+
+[connection signal="body_entered" from="RightDoorArea" to="RightDoorArea" method="_on_body_entered"]
+[connection signal="body_exited" from="RightDoorArea" to="RightDoorArea" method="_on_body_exited"]
+[connection signal="body_entered" from="LeftDoorArea2" to="LeftDoorArea2" method="_on_body_entered"]
+[connection signal="body_exited" from="LeftDoorArea2" to="LeftDoorArea2" method="_on_body_exited"]
