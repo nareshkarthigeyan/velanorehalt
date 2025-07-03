@@ -36,8 +36,8 @@ max_distance = 518.0
 attenuation = 2.0
 
 [node name="RightDoorArea" type="Area2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("4_6vem2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDoorArea"]
@@ -64,8 +64,6 @@ shape = SubResource("RectangleShape2D_qy3w2")
 [node name="Marker2D" type="Marker2D" parent="LeftDoorArea2"]
 position = Vector2(-2, -1)
 
-[connection signal="area_entered" from="RightDoorArea" to="RightDoorArea" method="_on_area_entered"]
-[connection signal="area_exited" from="RightDoorArea" to="RightDoorArea" method="_on_area_exited"]
 [connection signal="body_entered" from="RightDoorArea" to="RightDoorArea" method="_on_body_entered"]
 [connection signal="body_exited" from="RightDoorArea" to="RightDoorArea" method="_on_body_exited"]
 [connection signal="body_entered" from="LeftDoorArea2" to="LeftDoorArea2" method="_on_body_entered"]

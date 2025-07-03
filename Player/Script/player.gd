@@ -26,6 +26,7 @@ var jump_cancelled := false
 func _ready() -> void:
 	state_machine.Initialize(self)
 	main_scene = get_tree().get_current_scene()
+	print("👤 Player Spawn:", global_position)
 
 func _unhandled_input(event):
 	state_machine._unhandled_input(event)
@@ -65,53 +66,11 @@ func delayed_jump() -> void:
 	await get_tree().create_timer(0.05).timeout
 	if current_request and not jump_cancelled:
 		state_machine.ChangeState(state_machine.get_node("JumpState"))
-		
-#TRAIN
-func _reparent_to_train():
-	if get_parent() != current_train:
-		get_parent().remove_child(self)
-		current_train.add_child(self)
-		set_as_top_level(true)
-	state_machine.ChangeState(state_machine.get_node("BoardedState"))
-		
-func disembark(from_train):
-	if get_parent() == from_train:
-		var pos = global_position
-		from_train.remove_child(self)
-
-		main_scene.add_child(self)
-
-		global_position = pos
-		set_as_top_level(false)
-
-		can_board = false
-		current_train = null
-		boarding_marker = null
 	
 func is_inside_train() -> bool:
-	return get_parent() == current_train
+	return current_train != null and get_parent() == current_train
 	
 func _physics_process(delta: float) -> void:
 	state_machine._physics_process(delta)
-
-	
-	if Input.is_action_just_pressed(interaction_key):
-		#print("clicked E")
-		#print("can_board:", can_board)
-		#print("current_train:", current_train)
-		#print("boarding_marker:", boarding_marker)
-
-		if is_inside_train():
-			disembark(current_train)
-		elif can_board and current_train and boarding_marker:
-			last_train_pos = current_train.global_position
-			global_position = boarding_marker.global_position
-			set_as_top_level(true)
-			_reparent_to_train()
-
-			var blocker = current_train.get_node_or_null("Coach/DoorBlocker")
-			if blocker:
-				blocker.disabled = false
-
 	move_and_slide()
 	

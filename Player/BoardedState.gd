@@ -1,13 +1,33 @@
 class_name BoardedState
 extends State
 
+var just_boarded := true
+
 func Enter() -> void:
-	# Reparent to the train and sync position
+	# Snap to boarding marker
+	if player.boarding_marker:
+		player.global_position = player.boarding_marker.global_position
+
+	# Set top-level to preserve global transform during reparenting
 	player.set_as_top_level(true)
+
+	# Reparent to train if needed
+	if player.get_parent() != player.current_train:
+		player.get_parent().remove_child(player)
+		player.current_train.add_child(player)
+		player.set_as_top_level(true)  # Must call again after reparenting
+
+	# Sync train position
 	player.last_train_pos = player.current_train.global_position
 	player.z_index = -10
+
 	print("🚆 Entered BoardedState")
 
+	# Cooldown to prevent immediate disembark
+	just_boarded = true
+	await get_tree().create_timer(0.2).timeout
+	just_boarded = false
+	
 func Physics(delta: float) -> State:
 	# Disable vertical movement
 	player.velocity.y = 0
@@ -34,10 +54,12 @@ func Physics(delta: float) -> State:
 	return null
 
 func HandleInput(event: InputEvent) -> State:
+	if just_boarded:
+		return null
+
 	if event.is_action_pressed(player.interaction_key):
 		print("🚪 Disembarking...")
-		player.disembark(player.current_train)
-		player.z_index = 10;
+		#player.disembark(player.current_train)
 		return player.state_machine.get_node("IdleState")
 
 	if event is InputEventScreenTouch and event.pressed:
@@ -46,4 +68,17 @@ func HandleInput(event: InputEvent) -> State:
 	return null
 
 func Exit() -> void:
+	if player.get_parent() == player.current_train:
+		var pos = player.global_position
+		player.current_train.remove_child(player)
+
+		player.main_scene.add_child(player)
+
+		player.global_position = pos
+		player.set_as_top_level(false)
+
+		player.can_board = false
+		#player.current_train = null
+		#player.boarding_marker = null
+		
 	player.z_index = 10;
