@@ -31,6 +31,7 @@ func Physics(delta: float) -> State:
 func HandleInput(event: InputEvent) -> State:
 	if event.is_action_pressed(player.interaction_key):
 		if player.can_board and player.current_train and player.boarding_marker:
+			player.AnimatedPlayerSprite.play("idle")
 			return player.state_machine.get_node("BoardedState")
 
 	if event is InputEventScreenTouch and event.pressed:
