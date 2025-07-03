@@ -13,9 +13,8 @@ func _on_body_entered(body):
 		body.boarding_marker = get_node("Marker2D")
 
 func _on_body_exited(body):
-	#if body.get_class() == "CharacterBody2D" and not body.is_inside_train():
-		#print("🔴 Player left door area")
-		#body.can_board = false
+	if body.get_class() == "CharacterBody2D" and not body.is_inside_train():
+		print("🔴 Player left door area")
+		body.can_board = false
 		#body.current_train = null
 		#body.boarding_marker = null
-		pass

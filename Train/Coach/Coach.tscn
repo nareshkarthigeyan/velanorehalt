@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://d3s22w888qu4j" path="res://Train/Coach/boardingArea.gd" id="4_6vem2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qy3w2"]
-size = Vector2(47, 34.5)
+size = Vector2(23, 34.5)
 
 [node name="Coach" type="Node2D"]
 light_mask = 2
@@ -41,14 +41,13 @@ collision_mask = 3
 script = ExtResource("4_6vem2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightDoorArea"]
-visible = false
 light_mask = 3
 visibility_layer = 3
-position = Vector2(97.5, -0.75)
+position = Vector2(97, -1)
 shape = SubResource("RectangleShape2D_qy3w2")
 
 [node name="Marker2D" type="Marker2D" parent="RightDoorArea"]
-position = Vector2(95, 17)
+position = Vector2(96, 17)
 
 [node name="LeftDoorArea2" type="Area2D" parent="."]
 position = Vector2(-106, 18)
@@ -57,14 +56,13 @@ collision_mask = 3
 script = ExtResource("4_6vem2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftDoorArea2"]
-visible = false
 light_mask = 3
 visibility_layer = 3
-position = Vector2(2, -19)
+position = Vector2(1, -18)
 shape = SubResource("RectangleShape2D_qy3w2")
 
 [node name="Marker2D" type="Marker2D" parent="LeftDoorArea2"]
-position = Vector2(-3, -1)
+position = Vector2(-2, -1)
 
 [connection signal="area_entered" from="RightDoorArea" to="RightDoorArea" method="_on_area_entered"]
 [connection signal="area_exited" from="RightDoorArea" to="RightDoorArea" method="_on_area_exited"]

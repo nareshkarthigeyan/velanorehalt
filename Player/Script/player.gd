@@ -68,26 +68,21 @@ func delayed_jump() -> void:
 		
 #TRAIN
 func _reparent_to_train():
-	print(current_train)
 	if get_parent() != current_train:
-		print(current_train)
 		get_parent().remove_child(self)
 		current_train.add_child(self)
 		set_as_top_level(true)
-		state_machine.ChangeState(state_machine.get_node("BoardedState"))
+	state_machine.ChangeState(state_machine.get_node("BoardedState"))
 		
 func disembark(from_train):
 	if get_parent() == from_train:
 		var pos = global_position
 		from_train.remove_child(self)
 
-		# ✅ Add player to the main gameplay scene (not root)
 		main_scene.add_child(self)
 
 		global_position = pos
 		set_as_top_level(false)
-
-		print("✅ Disembarked from train.")
 
 		can_board = false
 		current_train = null
@@ -98,37 +93,24 @@ func is_inside_train() -> bool:
 	
 func _physics_process(delta: float) -> void:
 	state_machine._physics_process(delta)
-	
-	#if is_inside_train():
-		#var train_pos = current_train.global_position
-		#var train_delta = train_pos - last_train_pos
-#
-		## Move player along with actual delta of train
-		#global_position += train_delta
-#
-		## Update for next frame
-		#last_train_pos = train_pos
+
 	
 	if Input.is_action_just_pressed(interaction_key):
-		print("clicked E")
-		print("can_board:", can_board)
-		print("current_train:", current_train)
-		print("boarding_marker:", boarding_marker)
+		#print("clicked E")
+		#print("can_board:", can_board)
+		#print("current_train:", current_train)
+		#print("boarding_marker:", boarding_marker)
 
 		if is_inside_train():
-			print("🛑 Disembarking...")
 			disembark(current_train)
 		elif can_board and current_train and boarding_marker:
-			print("🚆 Boarding...")
 			last_train_pos = current_train.global_position
 			global_position = boarding_marker.global_position
 			set_as_top_level(true)
 			_reparent_to_train()
 
-			# ✅ Enable the blocker inside the current coach (assumes player is near a door)
 			var blocker = current_train.get_node_or_null("Coach/DoorBlocker")
 			if blocker:
-				print("🟦 Enabling door blocker")
 				blocker.disabled = false
 
 	move_and_slide()
